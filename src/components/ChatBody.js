@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
+const ChatBody = ({
+  messages,
+  lastMessageRef,
+  typingStatus,
+  selectedChatUser,
+}) => {
   const navigate = useNavigate();
 
   const handleLeaveChat = () => {
@@ -18,6 +23,7 @@ const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
           Leave Chat
         </button>
       </header>
+      <p> {selectedChatUser.userName ?? ""}</p>
 
       <div className="message__container">
         {/* Message sent from you  */}

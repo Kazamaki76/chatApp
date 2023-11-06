@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-const ChatBar = ({socket}) => {
+const ChatBar = ({ socket, onClick }) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     socket.on("newUserResponse", (data) => setUsers(data));
   }, [socket, users]);
+
   return (
     <div className="chat__sidebar">
       <h2>Open Chat</h2>
@@ -12,7 +13,14 @@ const ChatBar = ({socket}) => {
         <h4 className="chat__header"> Active Users </h4>
         <div className="chat__users">
           {users.map((user) => (
-            <p key={user.socketID}> {user.userName}</p>
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => onClick(user)}
+              key={user.socketID}
+            >
+              {" "}
+              {user.userName}
+            </p>
           ))}
         </div>
       </div>

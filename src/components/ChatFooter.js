@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+
+
 const ChatFooter = ({ socket,  }) => {
   const [message, setMessage] = useState("");
+  
 
   useEffect(() => {
     console.log("message", message);
@@ -20,6 +23,8 @@ const ChatFooter = ({ socket,  }) => {
     }
     console.log(e.key)
   };
+ 
+
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -46,7 +51,9 @@ const ChatFooter = ({ socket,  }) => {
           onKeyDown={handleTyping}
         />
         <button className="sendBtn"> Send </button>
+        
       </form>
+      
     </div>
   );
 };

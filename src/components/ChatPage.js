@@ -2,11 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import ChatBar from "./ChatBar.js";
 import ChatBody from "./ChatBody.js";
 import ChatFooter from "./ChatFooter.js";
+import PopUpChatWindow from "./PopUpChatWindow.js";
 
 const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [typingStatus, setTypingStatus] = useState("");
   const lastMessageRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedChatUser, setSelectedChatUser] = useState("");
+
+  const clickUserName = (userName) => {
+    setIsOpen(true);
+    setSelectedChatUser(userName);
+    console.log(selectedChatUser, "----------------");
+  };
 
   useEffect(() => {
     socket.on("messageResponse", (data) => {
@@ -37,14 +46,16 @@ const ChatPage = ({ socket }) => {
   }, [socket]);
   return (
     <div className="chat">
-      <ChatBar socket={socket} />
+      <ChatBar onClick={clickUserName} socket={socket} />
       <div className="chat__main">
         <ChatBody
           messages={messages}
           lastMessageRef={lastMessageRef}
           typingStatus={typingStatus}
+          selectedChatUser={selectedChatUser}
         />
         <ChatFooter socket={socket} setTypingStatus={setTypingStatus} />
+        {isOpen && <PopUpChatWindow />}
       </div>
     </div>
   );
