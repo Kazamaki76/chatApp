@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ChatBar from "./ChatBar.js";
 import ChatBody from "./ChatBody.js";
 import ChatFooter from "./ChatFooter.js";
-import PopUpChatWindow from "./PopUpChatWindow.js";
+
 
 const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
@@ -55,7 +55,7 @@ const ChatPage = ({ socket }) => {
           selectedChatUser={selectedChatUser}
         />
         <ChatFooter socket={socket} setTypingStatus={setTypingStatus} />
-        {isOpen && <PopUpChatWindow />}
+        
       </div>
     </div>
   );
