@@ -25,7 +25,7 @@ Ensure you have the following installed:
     ```
 4. Start the server:
     ```bash
-    npm start
+    npm run start
     ```
 
 ### Client Setup
@@ -43,7 +43,7 @@ Ensure you have the following installed:
     ```
 4. Start the client:
     ```bash
-    npm start
+    npm run start
     ```
 
 ## Running the Application
